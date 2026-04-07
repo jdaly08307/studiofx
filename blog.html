@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudioFX Blog | Web Design, Voice AI & SEO for Florida Businesses</title>
+    <meta name="description" content="Read StudioFX insights on web design, Voice AI, local SEO, and lead generation for Florida service businesses, including roofing, HVAC, dental, legal, and other local brands.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0812;
+            --surface: #110E1C;
+            --surface2: #16122A;
+            --border: #2A2240;
+            --accent: #8B5CF6;
+            --accent-light: #A78BFA;
+            --highlight: #E879F9;
+            --text: #EEEAF8;
+            --muted: #7B7391;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+        }
+
+        .text-huge {
+            font-size: clamp(3rem, 9vw, 7rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #A78BFA, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            background: #8B5CF6;
+            color: white;
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-pill:hover { transform: scale(1.04); background: #A78BFA; }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+
+        .accent-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--highlight);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .nav-shell {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-link {
+            color: var(--muted);
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+        }
+
+        .nav-link.active {
+            color: var(--accent-light);
+        }
+
+        .nav-logo {
+            line-height: 1;
+        }
+
+        .article-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .article-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(139,92,246,0.12);
+        }
+
+        .article-card .card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--surface2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card .card-image .bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: repeating-linear-gradient(
+                45deg,
+                var(--accent) 0,
+                var(--accent) 1px,
+                transparent 0,
+                transparent 50%
+            );
+            background-size: 12px 12px;
+        }
+
+        .article-card .card-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .article-card .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            color: var(--accent-light);
+        }
+
+        .article-card .card-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .article-card .card-excerpt {
+            font-size: 0.85rem;
+            font-weight: 500;
+            line-height: 1.65;
+            color: var(--muted);
+            flex: 1;
+        }
+
+        .article-card .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-top: 4px;
+            gap: 16px;
+        }
+
+        .article-card .card-meta .read-more {
+            color: var(--accent-light);
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .article-card.featured {
+            border-color: var(--accent);
+        }
+
+        .article-card.featured .card-title {
+            font-size: 1.6rem;
+        }
+
+        .filter-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            color: var(--muted);
+            background: none;
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            border-color: var(--accent);
+            color: var(--accent-light);
+            background: rgba(139,92,246,0.08);
+        }
+
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 28s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-up { animation: fadeUp 0.55s ease forwards; }
+        .fade-up-2 { animation: fadeUp 0.55s 0.12s ease both; }
+        .fade-up-3 { animation: fadeUp 0.55s 0.24s ease both; }
+
+        input::placeholder {
+            color: var(--muted);
+            opacity: 1;
+        }
+
+        input {
+            color: var(--text);
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr auto;
+                gap: 1rem;
+            }
+
+            .mobile-cta {
+                justify-self: end;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div style="background: linear-gradient(90deg, #6D28D9, #9333EA, #6D28D9);" class="text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
+        ✦ FREE VOICE AI STRATEGY CALL THIS MONTH — LIMITED SPOTS AVAILABLE ✦
+    </div>
+
+    <nav class="nav-shell">
+        <div class="nav-grid grid grid-cols-3 items-center px-6 py-8">
+            <div class="desktop-nav flex items-center gap-8 font-bold text-sm uppercase min-w-0">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+            </div>
+
+            <div class="justify-self-center">
+                <a href="index.html" class="nav-logo text-5xl md:text-6xl font-black tracking-tighter inline-block">
+                    <span class="gradient-text">StudioFX</span>
+                </a>
+            </div>
+
+            <div class="desktop-nav flex items-center justify-end gap-6 font-bold text-sm uppercase min-w-0">
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="contact.html" class="btn-pill text-xs px-6 py-3">Get a Quote →</a>
+            </div>
+
+            <div class="mobile-cta hidden"></div>
+        </div>
+    </nav>
+
+    <header class="px-6 py-20 text-center" style="border-bottom: 1px solid var(--border);">
+        <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest fade-up" style="border: 1px solid var(--border); color: var(--accent-light);">
+            <span class="accent-dot"></span>&nbsp; Insights &amp; Strategy
+        </div>
+        <h1 class="text-huge font-black uppercase mb-6 fade-up-2">
+            THE<br><span class="gradient-text">STUDIOFX BLOG.</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-xl font-medium fade-up-3" style="color: var(--muted);">
+            Practical guides on Voice AI, web design, and digital strategy for small businesses ready to grow. No fluff — just what actually works.
+        </p>
+    </header>
+
+    <div class="marquee py-4">
+        <div class="marquee-content font-bold uppercase text-xl flex gap-10">
+            <span style="color: var(--muted);">Voice AI</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Web Design</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Small Business AI</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">SEO Strategy</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Industry Guides</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Conversion Tips</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Voice AI</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Web Design</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Small Business AI</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">SEO Strategy</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Industry Guides</span>
+            <span style="color: var(--accent);">✦</span>
+            <span style="color: var(--muted);">Conversion Tips</span>
+            <span style="color: var(--accent);">✦</span>
+        </div>
+    </div>
+
+    <div class="px-6 py-8 flex flex-wrap gap-3" style="border-bottom: 1px solid var(--border);">
+        <button class="filter-pill active" onclick="filterPosts(this, 'all')">All Posts</button>
+        <button class="filter-pill" onclick="filterPosts(this, 'voice-ai')">🎙️ Voice AI</button>
+        <button class="filter-pill" onclick="filterPosts(this, 'web-design')">🌐 Web Design</button>
+        <button class="filter-pill" onclick="filterPosts(this, 'industry')">🏢 Industry Guides</button>
+        <button class="filter-pill" onclick="filterPosts(this, 'seo')">⚡ SEO & Growth</button>
+    </div>
+
+    <section class="px-6 py-16" style="border-bottom: 1px solid var(--border);">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="mb-8" id="featured-post" data-category="voice-ai">
+                <a href="blog-post.html" class="article-card featured flex flex-col md:flex-row">
+                    <div class="card-image md:w-2/5" style="aspect-ratio: auto; min-height: 280px;">
+                        <img src="/images/voice_ai_office.png" alt="Dental front desk using Voice AI for appointment booking and patient communication" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <div class="card-body md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="tag">Voice AI</span>
+                            <span class="tag" style="background: rgba(139,92,246,0.1); border-color: var(--accent);">Featured</span>
+                        </div>
+                        <h2 class="card-title" style="font-size: 1.8rem;">Is Voice AI Right for Your Dental Practice? A Straight-Talk Guide for 2026</h2>
+                        <p class="card-excerpt">Dental offices field hundreds of routine calls a week — appointment bookings, cancellations, insurance questions, hours. Here's exactly what Voice AI can handle, what it can't, and whether the ROI makes sense for a practice your size.</p>
+                        <div class="card-meta">
+                            <span>March 28, 2026 &nbsp;✦&nbsp; 8 min read</span>
+                            <span class="read-more">Read Article →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="post-grid">
+
+<a href="/how-ai-voice-helps-roofing-companies.html" class="article-card" data-category="industry">
+    <div class="card-image">
+        <img src="/images/ai_voice_roofing.png" alt="Roofing company dispatcher using Voice AI for after-hours lead capture and estimate scheduling" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    <div class="card-body">
+        <span class="tag">Industry Guide</span>
+        <h3 class="card-title">Why Roofing Companies Lose 30% of Their Leads After Hours (And How to Fix It)</h3>
+        <p class="card-excerpt">Storm damage doesn't wait for business hours. We break down the after-hours lead problem in roofing and show you how Voice AI closes the gap.</p>
+        <div class="card-meta">
+            <span>Mar 21, 2026 &nbsp;✦&nbsp; 6 min</span>
+            <span class="read-more">Read →</span>
+        </div>
+    </div>
+</a>
+
+                <a href="#" class="article-card" data-category="web-design">
+                    <div class="card-image">
+                        <img src="/images/website_audit1.png" alt="Website audit showing conversion issues like slow load time, missing CTA, and weak trust signals" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Web Design</span>
+                        <h3 class="card-title">5 Things Your Website Is Doing Wrong That Kill Conversions Before Anyone Calls You</h3>
+                        <p class="card-excerpt">Most small business websites have the same five problems. They're subtle, they're fixable, and every single one is costing you money right now.</p>
+                        <div class="card-meta">
+                            <span>Mar 14, 2026 &nbsp;✦&nbsp; 5 min</span>
+                            <span class="read-more">Read →</span>
+                        </div>
+                    </div>
+                </a>
+
+ <a href="#" class="article-card" data-category="voice-ai">
+    <div class="card-image">
+        <img src="/images/hvac_voice_ai.png" alt="HVAC dispatcher using Voice AI to manage seasonal call spikes and service scheduling" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    <div class="card-body">
+        <span class="tag">Voice AI</span>
+        <h3 class="card-title">HVAC & Voice AI: How to Handle Seasonal Call Spikes Without Hiring More Staff</h3>
+        <p class="card-excerpt">Summer and winter bring a flood of calls that overwhelm front desks. Here's how HVAC companies are using Voice AI to handle volume without adding headcount.</p>
+        <div class="card-meta">
+            <span>Mar 7, 2026 &nbsp;✦&nbsp; 7 min</span>
+            <span class="read-more">Read →</span>
+        </div>
+    </div>
+</a>
+
+                <a href="#" class="article-card" data-category="seo">
+                    <div class="card-image">
+                        <img src="/images/small_business.png" alt="Small business owner auditing local SEO and website performance" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">SEO &amp; Growth</span>
+                        <h3 class="card-title">Local SEO in 2026: The Only Guide a Small Business Owner Actually Needs</h3>
+                        <p class="card-excerpt">Google's local pack is prime real estate. We cut through the noise and show you the six things that actually move the needle for local search rankings.</p>
+                        <div class="card-meta">
+                            <span>Feb 28, 2026 &nbsp;✦&nbsp; 9 min</span>
+                            <span class="read-more">Read →</span>
+                        </div>
+                    </div>
+                </a>
+
+<a href="#" class="article-card" data-category="industry">
+    <div class="card-image">
+        <img src="/images/law_firm_voice_ai.png" alt="Law firm intake desk using Voice AI to screen clients and book consultations" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    <div class="card-body">
+        <span class="tag">Industry Guide</span>
+        <h3 class="card-title">Law Firm AI: How to Screen Clients and Book Consultations Without Tying Up Staff</h3>
+        <p class="card-excerpt">Intake is the most time-consuming part of client acquisition at most law firms. Voice AI handles it 24/7 — and we explain exactly how to set it up correctly.</p>
+        <div class="card-meta">
+            <span>Feb 21, 2026 &nbsp;✦&nbsp; 6 min</span>
+            <span class="read-more">Read →</span>
+        </div>
+    </div>
+</a>
+
+<a href="#" class="article-card" data-category="web-design">
+    <div class="card-image">
+        <img src="/images/custom_site.png" alt="Comparison of custom website design versus template website options" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    <div class="card-body">
+        <span class="tag">Web Design</span>
+        <h3 class="card-title">Custom vs. Template: Why the Cheapest Website Option Usually Costs You More</h3>
+        <p class="card-excerpt">Template sites look fine on day one. But they limit your SEO, your branding, and your ability to scale. Here's the real cost comparison — with actual numbers.</p>
+        <div class="card-meta">
+            <span>Feb 14, 2026 &nbsp;✦&nbsp; 5 min</span>
+            <span class="read-more">Read →</span>
+        </div>
+    </div>
+</a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6" style="border-bottom: 1px solid var(--border); background: var(--surface);">
+        <div class="max-w-2xl mx-auto text-center">
+            <span class="section-label text-center" style="display:block;">Stay Sharp</span>
+            <h2 class="text-4xl md:text-5xl font-black uppercase mb-4">New Posts.<br><span class="gradient-text">Every Week.</span></h2>
+            <p class="text-base font-medium mb-8" style="color: var(--muted);">Practical AI and web strategy for small business owners. No filler, no spam — just the stuff that's actually worth reading.</p>
+            <div class="flex gap-0 max-w-md mx-auto" style="border: 1px solid var(--border);">
+                <input type="email" id="newsletter-email" placeholder="your@email.com" class="flex-1 bg-transparent px-5 py-4 text-sm font-bold outline-none" style="color: var(--text);">
+                <button onclick="subscribeNewsletter()" class="btn-pill rounded-none px-6 py-4 text-sm uppercase" style="border-radius: 0;">Subscribe →</button>
+            </div>
+            <p id="newsletter-confirm" class="text-xs font-bold mt-3 hidden" style="color: var(--accent-light);">✓ You're in. Watch your inbox.</p>
+        </div>
+    </section>
+
+    <footer style="background: var(--surface);">
+        <div class="px-6 grid grid-cols-1 md:grid-cols-4 gap-12 py-20" style="border-bottom: 1px solid var(--border);">
+            <div>
+                <p class="font-black text-2xl mb-4 gradient-text">StudioFX</p>
+                <p class="text-sm leading-relaxed" style="color: var(--muted);">Web design and Voice AI solutions that turn visitors into customers — and ideas into growth engines.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Services</h4>
+                <ul class="flex flex-col gap-3 font-bold">
+                    <li><a href="services.html#web-design" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Web Design</a></li>
+                    <li><a href="services.html#voice-ai" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Voice AI Agents</a></li>
+                    <li><a href="services.html#industries" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Industries</a></li>
+                    <li><a href="services.html#faq" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Company</h4>
+                <ul class="flex flex-col gap-3 font-bold">
+                    <li><a href="index.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Home</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Services</a></li>
+                    <li><a href="portfolio.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Portfolio</a></li>
+                    <li><a href="blog.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Contact</a></li>
+                    <li><a href="index.html" class="uppercase text-xs tracking-widest font-bold" style="color: var(--accent-light);">StudioFX.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Stay Updated</h4>
+                <div class="flex pb-2 mb-3" style="border-bottom: 1px solid var(--border);">
+                    <input type="email" placeholder="your@email.com" class="bg-transparent outline-none w-full text-sm font-bold" style="color: var(--text);">
+                    <button class="font-black" style="color: var(--accent);">→</button>
+                </div>
+                <p class="text-xs" style="color: var(--muted);">AI industry insights & studio updates. No spam.</p>
+            </div>
+        </div>
+        <div class="overflow-hidden" style="border-bottom: 1px solid var(--border);">
+            <h1 class="text-[25vw] font-black leading-none tracking-tighter select-none pointer-events-none gradient-text" style="opacity: 0.08;">StudioFX</h1>
+        </div>
+        <div class="p-6 flex justify-between text-[10px] font-bold uppercase" style="color: var(--muted);">
+            <p>© 2026 StudioFX Digital LLC</p>
+            <p>WEB DESIGN ✦ VOICE AI</p>
+        </div>
+    </footer>
+
+    <script>
+        function filterPosts(btn, category) {
+            document.querySelectorAll('.filter-pill').forEach(function(p) {
+                p.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            const featured = document.getElementById('featured-post');
+            const cards = document.querySelectorAll('#post-grid [data-category]');
+
+            if (category === 'all') {
+                featured.style.display = '';
+                cards.forEach(function(c) {
+                    c.style.display = '';
+                });
+            } else {
+                featured.style.display = featured.dataset.category === category ? '' : 'none';
+                cards.forEach(function(c) {
+                    c.style.display = c.dataset.category === category ? '' : 'none';
+                });
+            }
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletter-email').value.trim();
+            if (!email || !email.includes('@')) return;
+            document.getElementById('newsletter-confirm').classList.remove('hidden');
+            document.getElementById('newsletter-email').value = '';
+        }
+    </script>
+
+</body>
+</html>
