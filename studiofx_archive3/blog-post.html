@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO META -->
+    <title>Is Voice AI Right for Your Dental Practice? A 2026 Guide | StudioFX</title>
+    <meta name="description" content="Dental offices field hundreds of routine calls a week. Here's exactly what Voice AI can handle, what it can't, and whether the ROI makes sense for your practice.">
+    <meta name="keywords" content="voice AI dental practice, dental office automation, AI appointment booking dentist">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Is Voice AI Right for Your Dental Practice? A 2026 Guide">
+    <meta property="og:description" content="Dental offices field hundreds of routine calls a week. Here's exactly what Voice AI can and can't handle.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://studiofx.com/blog/voice-ai-dental-practice">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0812;
+            --surface: #110E1C;
+            --surface2: #16122A;
+            --border: #2A2240;
+            --accent: #8B5CF6;
+            --accent-light: #A78BFA;
+            --highlight: #E879F9;
+            --text: #EEEAF8;
+            --muted: #7B7391;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+            scroll-behavior: smooth;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #A78BFA, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            background: #8B5CF6;
+            color: white;
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-pill:hover { transform: scale(1.04); background: #A78BFA; }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+
+        .accent-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--highlight);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: block;
+        }
+
+        .nav-shell {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-link {
+            color: var(--muted);
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+        }
+
+        .nav-link.active {
+            color: var(--accent-light);
+        }
+
+        .nav-logo {
+            line-height: 1;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #D4CEEC;
+        }
+
+        .article-body h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-body h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--accent-light);
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body ul,
+        .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-body strong {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            color: var(--text);
+        }
+
+        .article-body a {
+            color: var(--accent-light);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-body a:hover { color: var(--highlight); }
+
+        .callout {
+            border-left: 3px solid var(--accent);
+            background: var(--surface);
+            padding: 20px 24px;
+            margin: 2rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1.6;
+        }
+
+        .callout.stat {
+            text-align: center;
+            border-left: none;
+            border: 1px solid var(--accent);
+            padding: 28px;
+        }
+
+        .callout.stat .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #A78BFA, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #reading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8B5CF6, #E879F9);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        .sidebar-cta {
+            position: sticky;
+            top: 100px;
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            padding: 28px 24px;
+            box-shadow: 4px 4px 0px var(--accent);
+        }
+
+        .related-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 24px;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .related-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            color: var(--accent-light);
+        }
+
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 28s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .toc-link {
+            display: block;
+            padding: 8px 0;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.15s ease;
+        }
+
+        .toc-link:hover { color: var(--accent-light); }
+        .toc-link:last-child { border-bottom: none; }
+
+        input::placeholder {
+            color: var(--muted);
+            opacity: 1;
+        }
+
+        input {
+            color: var(--text);
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr auto;
+                gap: 1rem;
+            }
+
+            .mobile-cta {
+                justify-self: end;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="reading-bar"></div>
+
+    <!-- Announcement Bar -->
+    <div style="background: linear-gradient(90deg, #6D28D9, #9333EA, #6D28D9);" class="text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
+        ✦ FREE VOICE AI STRATEGY CALL THIS MONTH — LIMITED SPOTS AVAILABLE ✦
+    </div>
+
+    <!-- Nav -->
+    <nav class="nav-shell">
+        <div class="nav-grid grid grid-cols-3 items-center px-6 py-8">
+            <div class="desktop-nav flex items-center gap-8 font-bold text-sm uppercase min-w-0">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+            </div>
+
+            <div class="justify-self-center">
+                <a href="index.html" class="nav-logo text-5xl md:text-6xl font-black tracking-tighter inline-block">
+                    <span class="gradient-text">StudioFX</span>
+                </a>
+            </div>
+
+            <div class="desktop-nav flex items-center justify-end gap-6 font-bold text-sm uppercase min-w-0">
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="contact.html" class="btn-pill text-xs px-6 py-3">Get a Quote →</a>
+            </div>
+
+            <div class="mobile-cta hidden"></div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="px-6 py-16 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-8" style="color: var(--muted);">
+            <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+            <span>✦</span>
+            <span style="color: var(--accent-light);">Voice AI</span>
+        </div>
+
+        <div class="flex items-center gap-3 mb-6 flex-wrap">
+            <span class="tag">🎙️ Voice AI</span>
+            <span class="tag">Industry Guide</span>
+            <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--muted);">8 min read</span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-black uppercase mb-6" style="line-height: 1; letter-spacing: -0.03em;">
+            Is Voice AI Right for Your Dental Practice?<br>
+            <span class="gradient-text">A Straight-Talk Guide for 2026.</span>
+        </h1>
+
+        <p class="text-xl font-medium mb-8" style="color: var(--muted); font-family: 'Lora', serif; font-style: italic;">
+            Dental offices field hundreds of routine calls a week — appointment bookings, cancellations, insurance questions, hours. Here's exactly what Voice AI can handle, what it can't, and whether the ROI makes sense for a practice your size.
+        </p>
+
+        <div class="flex items-center gap-4 py-6" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm" style="background: var(--accent); color: white;">SF</div>
+            <div>
+                <p class="font-black text-sm uppercase">StudioFX Team</p>
+                <p class="text-xs font-medium" style="color: var(--muted);">March 28, 2026 &nbsp;✦&nbsp; Updated April 1, 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee py-3">
+        <div class="marquee-content font-bold uppercase text-sm flex gap-8" style="color: var(--muted);">
+            <span>Voice AI</span><span style="color:var(--accent)">✦</span>
+            <span>Dental Practice Automation</span><span style="color:var(--accent)">✦</span>
+            <span>Appointment Booking AI</span><span style="color:var(--accent)">✦</span>
+            <span>Small Business AI</span><span style="color:var(--accent)">✦</span>
+            <span>24/7 Phone Coverage</span><span style="color:var(--accent)">✦</span>
+            <span>Voice AI</span><span style="color:var(--accent)">✦</span>
+            <span>Dental Practice Automation</span><span style="color:var(--accent)">✦</span>
+            <span>Appointment Booking AI</span><span style="color:var(--accent)">✦</span>
+            <span>Small Business AI</span><span style="color:var(--accent)">✦</span>
+            <span>24/7 Phone Coverage</span><span style="color:var(--accent)">✦</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="px-6 py-16">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+                <!-- Article -->
+                <article class="lg:col-span-2 article-body" id="article-content">
+
+                    <p>If you run a dental practice, your front desk is fielding the same calls on repeat. "Can I book a cleaning for Tuesday?" "What are your hours?" "Do you take Delta Dental?" "I need to reschedule my 3pm." These calls aren't hard — they're just relentless. And every one of them costs you time, staff energy, and occasionally a missed booking when the line is busy.</p>
+
+                    <p>Voice AI is designed to handle exactly this. But before you deploy one, you need to know where it works, where it doesn't, and what a realistic return looks like for a practice your size. That's what this guide covers — no hype, just the actual picture.</p>
+
+                    <div class="callout stat">
+                        <span class="stat-number">60%</span>
+                        <p style="color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0;">Average reduction in front desk call volume reported by dental practices after deploying a Voice AI agent for routine inquiries.</p>
+                    </div>
+
+                    <h2 id="what-voice-ai-handles">What Voice AI Actually Handles Well</h2>
+
+                    <p>The sweet spot for Voice AI in a dental office is any call that follows a predictable pattern. The agent doesn't need to think — it needs to listen, confirm, and take action. Here's where it performs best:</p>
+
+                    <h3>Appointment Booking & Rescheduling</h3>
+                    <p>A caller says they want a cleaning on Thursday afternoon. The Voice AI checks availability, offers time slots, confirms the appointment, and sends a text or email confirmation — all without a human involved. Same for cancellations and reschedules. This alone typically accounts for 40–60% of your inbound call volume.</p>
+
+                    <h3>Hours, Location & FAQ Handling</h3>
+                    <p>Your hours. Your address. Whether you're accepting new patients. What insurance you take. These questions get asked dozens of times a day. A Voice AI answers them instantly, 24/7, without pulling a staff member off a patient interaction to pick up the phone.</p>
+
+                    <h3>After-Hours Coverage</h3>
+                    <p>This is the one most practices underestimate. Patients call in the evening, on weekends, during lunch when your desk is empty. A Voice AI doesn't sleep. It captures the inquiry, books the appointment if possible, or takes a message and routes it correctly — so no lead slips through.</p>
+
+                    <div class="callout">
+                        💡 <strong>Key insight:</strong> After-hours calls represent 25–35% of total inbound volume for most dental offices. Without coverage, the majority of those callers don't leave a message — they call the next practice on Google.
+                    </div>
+
+                    <h2 id="what-it-cant-do">What Voice AI Can't Do (Be Honest About This)</h2>
+
+                    <p>Voice AI isn't a replacement for a skilled front desk coordinator. There are conversations that require human judgment, and you need to route those correctly from day one.</p>
+
+                    <ul>
+                        <li><strong>Complex insurance verification</strong> — Multi-step benefit checks with specific coverage questions need a human.</li>
+                        <li><strong>Dental emergencies</strong> — A patient describing tooth pain or a broken crown needs immediate human triage, not an AI scheduling flow.</li>
+                        <li><strong>Billing disputes</strong> — Sensitive, relationship-dependent conversations shouldn't be automated.</li>
+                        <li><strong>New patient clinical intake</strong> — Initial health history and medical questionnaires require staff involvement.</li>
+                    </ul>
+
+                    <p>A well-built Voice AI knows when to hand off. The moment a caller says "I'm in pain" or "this is an emergency," the agent should transfer immediately. This isn't a limitation — it's how the system should work.</p>
+
+                    <h2 id="roi-breakdown">The ROI Breakdown: Does It Make Sense for Your Practice?</h2>
+
+                    <p>Let's run the numbers on a mid-sized dental practice with two front desk staff handling roughly 80–120 calls per day.</p>
+
+                    <p>If Voice AI handles 55% of those calls automatically, that's 44–66 calls per day that no longer require staff time. At an average of 3 minutes per call, that's 2–3 hours of staff time freed up daily — time that can go toward patient experience, billing follow-up, or simply reducing the pressure on your team.</p>
+
+                    <p>On the revenue side: after-hours coverage alone typically recovers 8–12 bookings per month that would otherwise have been lost. At an average appointment value of $200–350, that's $1,600–$4,200 in recovered monthly revenue — from a system that costs a fraction of that to run.</p>
+
+                    <div class="callout stat">
+                        <span class="stat-number">$2,800</span>
+                        <p style="color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0;">Average monthly revenue recovered by dental practices through after-hours Voice AI coverage alone, based on typical appointment values and call capture rates.</p>
+                    </div>
+
+                    <h2 id="setup-what-to-expect">Setup: What to Actually Expect</h2>
+
+                    <p>A Voice AI deployment for a dental office typically takes 5–7 business days from kickoff to live calls. The setup process involves training the agent on your specific practice — your services, your hours, your insurance accepted, your booking logic — so it sounds like your staff, not a generic bot.</p>
+
+                    <p>The most common mistake practices make is deploying an off-the-shelf agent without customization. If your AI doesn't know that you're not accepting new Medicaid patients until Q3, or that Dr. Chen only does implants on Wednesdays, it creates a frustrating experience. Custom training isn't optional — it's the whole product.</p>
+
+                    <h2 id="bottom-line">The Bottom Line</h2>
+
+                    <p>Voice AI is a strong fit for most dental practices. The use cases are well-defined, the ROI is measurable, and the implementation isn't complicated when done right. If your front desk is fielding more than 50 calls a day, you're almost certainly leaving money on the table without it.</p>
+
+                    <p>The question isn't really whether Voice AI makes sense for a dental office — it's whether it's set up correctly for <em>yours</em>. That's where the difference between a generic deployment and a tailored one shows up in your booking numbers.</p>
+
+                    <div class="mt-16 pt-8" style="border-top: 1px solid var(--border);">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-black" style="background: var(--accent); color: white;">SF</div>
+                            <div>
+                                <p class="font-black text-sm uppercase">Written by StudioFX</p>
+                                <p class="text-xs font-medium" style="color: var(--muted);">We build custom websites and deploy Voice AI agents for small businesses. If this article was useful, the next step is a free 20-minute strategy call.</p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn-pill uppercase">Book a Free Strategy Call →</a>
+                    </div>
+
+                </article>
+
+                <!-- Sidebar -->
+                <aside class="lg:col-span-1">
+
+                    <div class="mb-8 p-6" style="background: var(--surface); border: 1px solid var(--border);">
+                        <p class="section-label mb-4">In This Article</p>
+                        <nav>
+                            <a href="#what-voice-ai-handles" class="toc-link">What Voice AI Handles Well</a>
+                            <a href="#what-it-cant-do" class="toc-link">What It Can't Do</a>
+                            <a href="#roi-breakdown" class="toc-link">The ROI Breakdown</a>
+                            <a href="#setup-what-to-expect" class="toc-link">Setup: What to Expect</a>
+                            <a href="#bottom-line" class="toc-link">The Bottom Line</a>
+                        </nav>
+                    </div>
+
+                    <div class="sidebar-cta">
+                        <p class="section-label mb-3">Ready to Deploy?</p>
+                        <h3 class="text-xl font-black uppercase mb-3">Get Voice AI for Your Practice</h3>
+                        <p class="text-sm font-medium mb-6" style="color: var(--muted);">We deploy custom Voice AI agents for dental offices in 5–7 days. Starting at $997 with no long-term contracts.</p>
+                        <a href="contact.html" class="btn-pill w-full uppercase text-sm text-center mb-3">Book a Free Call →</a>
+                        <a href="services.html#voice-ai" class="btn-outline w-full uppercase text-sm text-center">See Pricing →</a>
+                        <div class="mt-6 pt-5" style="border-top: 1px solid var(--border);">
+                            <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: var(--muted);">What's included:</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="text-xs font-semibold" style="color: var(--text);">✓ Custom-trained agent</p>
+                                <p class="text-xs font-semibold" style="color: var(--text);">✓ 5-day deployment</p>
+                                <p class="text-xs font-semibold" style="color: var(--text);">✓ No long-term contracts</p>
+                                <p class="text-xs font-semibold" style="color: var(--text);">✓ Free strategy call first</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Related Posts -->
+    <section class="px-6 py-16" style="border-top: 1px solid var(--border); background: var(--surface);">
+        <div class="max-w-6xl mx-auto">
+            <p class="section-label mb-2">Keep Reading</p>
+            <h2 class="text-3xl font-black uppercase mb-10">Related Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <a href="#" class="related-card">
+                    <span class="tag mb-3 inline-block">Industry Guide</span>
+                    <h3 class="text-lg font-black uppercase mb-2" style="line-height: 1.2;">Why Roofing Companies Lose 30% of Their Leads After Hours</h3>
+                    <p class="text-sm font-medium mb-4" style="color: var(--muted);">Storm damage doesn't wait for business hours. We break down the after-hours lead problem and the fix.</p>
+                    <p class="text-xs font-black uppercase" style="color: var(--accent-light);">Read Article →</p>
+                </a>
+
+                <a href="#" class="related-card">
+                    <span class="tag mb-3 inline-block">Voice AI</span>
+                    <h3 class="text-lg font-black uppercase mb-2" style="line-height: 1.2;">HVAC & Voice AI: Handle Seasonal Call Spikes Without Hiring</h3>
+                    <p class="text-sm font-medium mb-4" style="color: var(--muted);">Summer and winter flood front desks. Here's how HVAC companies handle volume without adding headcount.</p>
+                    <p class="text-xs font-black uppercase" style="color: var(--accent-light);">Read Article →</p>
+                </a>
+
+                <a href="#" class="related-card">
+                    <span class="tag mb-3 inline-block">Web Design</span>
+                    <h3 class="text-lg font-black uppercase mb-2" style="line-height: 1.2;">5 Things Your Website Is Doing Wrong That Kill Conversions</h3>
+                    <p class="text-sm font-medium mb-4" style="color: var(--muted);">Most small business websites have the same five problems. They're fixable — and they're costing you money.</p>
+                    <p class="text-xs font-black uppercase" style="color: var(--accent-light);">Read Article →</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-24 px-6 text-center" style="border-top: 1px solid var(--border);">
+        <p class="section-label text-center mb-4">Next Step</p>
+        <h2 class="text-5xl md:text-6xl font-black uppercase mb-6" style="line-height: 0.95; letter-spacing: -0.04em;">
+            READY TO DEPLOY<br><span class="gradient-text">VOICE AI?</span>
+        </h2>
+        <p class="max-w-xl mx-auto text-lg mb-10 font-medium" style="color: var(--muted);">
+            Book a free 20-minute strategy call. We'll scope your use case, walk you through the setup, and give you a same-day proposal — no obligation.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="contact.html" class="btn-pill uppercase text-base px-12 py-4">Book a Free Call →</a>
+            <a href="services.html#voice-ai" class="btn-outline uppercase text-base px-12 py-4">See Voice AI Pricing →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--surface);">
+        <div class="px-6 grid grid-cols-1 md:grid-cols-4 gap-12 py-20" style="border-bottom: 1px solid var(--border);">
+            <div>
+                <p class="font-black text-2xl mb-4 gradient-text">StudioFX</p>
+                <p class="text-sm leading-relaxed" style="color: var(--muted);">Web design and Voice AI solutions that turn visitors into customers — and ideas into growth engines.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Services</h4>
+                <ul class="flex flex-col gap-3 font-bold">
+                    <li><a href="services.html#web-design" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Web Design</a></li>
+                    <li><a href="services.html#voice-ai" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Voice AI Agents</a></li>
+                    <li><a href="services.html#industries" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Industries</a></li>
+                    <li><a href="services.html#faq" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Company</h4>
+                <ul class="flex flex-col gap-3 font-bold">
+                    <li><a href="index.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Home</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Services</a></li>
+                    <li><a href="portfolio.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Portfolio</a></li>
+                    <li><a href="blog.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Contact</a></li>
+                    <li><a href="index.html" class="uppercase text-xs tracking-widest font-bold" style="color: var(--accent-light);">StudioFX.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Stay Updated</h4>
+                <div class="flex pb-2 mb-3" style="border-bottom: 1px solid var(--border);">
+                    <input type="email" placeholder="your@email.com" class="bg-transparent outline-none w-full text-sm font-bold" style="color: var(--text);">
+                    <button class="font-black" style="color: var(--accent);">→</button>
+                </div>
+                <p class="text-xs" style="color: var(--muted);">AI industry insights & studio updates. No spam.</p>
+            </div>
+        </div>
+        <div class="overflow-hidden" style="border-bottom: 1px solid var(--border);">
+            <h1 class="text-[25vw] font-black leading-none tracking-tighter select-none pointer-events-none gradient-text" style="opacity: 0.08;">StudioFX</h1>
+        </div>
+        <div class="p-6 flex justify-between text-[10px] font-bold uppercase" style="color: var(--muted);">
+            <p>© 2026 StudioFX Digital LLC</p>
+            <p>WEB DESIGN ✦ VOICE AI</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const article = document.getElementById('article-content');
+            const bar = document.getElementById('reading-bar');
+            if (!article) return;
+
+            const rect = article.getBoundingClientRect();
+            const articleHeight = article.offsetHeight;
+            const scrolled = -rect.top;
+            const progress = Math.min(Math.max(scrolled / articleHeight, 0), 1);
+            bar.style.width = (progress * 100) + '%';
+        });
+
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

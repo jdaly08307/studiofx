@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About StudioFX | Web Design & Voice AI for Florida Service Businesses</title>
+    <meta name="description" content="Learn about StudioFX, a Florida-based web design and Voice AI company helping service businesses grow     
+	with custom websites, smarter lead capture, and AI-powered call automation.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0812;
+            --surface: #110E1C;
+            --border: #2A2240;
+            --accent: #8B5CF6;
+            --accent-light: #A78BFA;
+            --highlight: #E879F9;
+            --text: #EEEAF8;
+            --muted: #7B7391;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        .text-huge {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            background: #8B5CF6;
+            color: white;
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+        .btn-pill:hover { transform: scale(1.04); background: #A78BFA; }
+        .btn-pill:active { transform: scale(0.96); }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+        .gradient-text {
+            background: linear-gradient(135deg, #A78BFA, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .accent-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--highlight);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .value-card {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: all 0.2s ease;
+        }
+        .value-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 4px 4px 0px var(--accent);
+        }
+        .stat-number {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Announcement Bar -->
+    <div style="background: linear-gradient(90deg, #6D28D9, #9333EA, #6D28D9);" class="text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
+        ✦ FREE VOICE AI STRATEGY CALL THIS MONTH — LIMITED SPOTS AVAILABLE ✦
+    </div>
+
+<!-- Nav -->
+<nav class="flex justify-between items-center px-6 py-8" style="border-bottom: 1px solid var(--border);">
+    <div class="flex gap-8 font-bold text-sm uppercase">
+        <a href="services.html" class="hover:text-white transition-colors" style="color: var(--muted);">Services</a>
+        <a href="portfolio.html" class="hover:text-white transition-colors" style="color: var(--muted);">Portfolio</a>
+        <a href="about.html" class="hover:text-white transition-colors" style="color: var(--muted);">About</a>
+        <a href="blog.html" class="hover:text-white transition-colors" style="color: var(--muted);">Blog</a>
+    </div>
+
+    <a href="index.html" class="text-5xl md:text-6xl font-black tracking-tighter leading-none">
+        <span class="gradient-text">StudioFX</span>
+    </a>
+
+    <div class="flex gap-6 font-bold text-sm uppercase items-center">
+        <a href="contact.html" class="hover:text-white transition-colors" style="color: var(--muted);">Contact</a>
+        <a href="contact.html" class="btn-pill text-xs px-6 py-3">Get Quote</a>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="py-32 px-6 text-center" style="border-bottom: 1px solid var(--border);">
+        <p class="text-xs font-black uppercase tracking-widest mb-6" style="color: var(--accent);">About StudioFX</p>
+        <h1 class="text-huge font-black uppercase mb-8">
+            BUILT ON<br><span class="gradient-text">TRUST.</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-xl font-medium" style="color: var(--muted);">
+            For over a decade, we've helped businesses in Bradenton and beyond turn digital presence into real growth. No fluff. No missed deadlines. Just results.
+        </p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="grid grid-cols-2 md:grid-cols-4" style="border-bottom: 1px solid var(--border);">
+        <div class="p-8 md:p-12 text-center" style="border-right: 1px solid var(--border);">
+            <p class="stat-number gradient-text">10+</p>
+            <p class="text-xs font-black uppercase tracking-widest mt-4" style="color: var(--muted);">Years in Business</p>
+        </div>
+        <div class="p-8 md:p-12 text-center" style="border-right: 1px solid var(--border);">
+            <p class="stat-number gradient-text">200+</p>
+            <p class="text-xs font-black uppercase tracking-widest mt-4" style="color: var(--muted);">Projects Delivered</p>
+        </div>
+        <div class="p-8 md:p-12 text-center" style="border-right: 1px solid var(--border);">
+            <p class="stat-number gradient-text">98%</p>
+            <p class="text-xs font-black uppercase tracking-widest mt-4" style="color: var(--muted);">Client Satisfaction</p>
+        </div>
+        <div class="p-8 md:p-12 text-center">
+            <p class="stat-number gradient-text">24h</p>
+            <p class="text-xs font-black uppercase tracking-widest mt-4" style="color: var(--muted);">Response Time</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="py-24 px-6" style="border-bottom: 1px solid var(--border);">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-xs font-black uppercase tracking-widest mb-6" style="color: var(--accent);">Our Story</p>
+            <h2 class="text-4xl md:text-5xl font-black uppercase mb-8">
+                FROM CYBERSECURITY TO <span class="gradient-text">CREATIVE TECH</span>
+            </h2>
+            <div class="space-y-6 text-lg leading-relaxed" style="color: var(--muted);">
+                <p>
+                    StudioFX started with a simple belief: businesses deserve digital partners who actually deliver. Founded in Bradenton, Florida, we've spent the last decade proving that great design and cutting-edge technology aren't mutually exclusive — and that deadlines aren't suggestions.
+                </p>
+                <p>
+                    Our founder, <span style="color: var(--text); font-weight: 700;">John Daly</span>, brings decades of experience spanning cybersecurity and web design. That background shapes everything we do — from bulletproof hosting configurations to conversion-focused interfaces. When you work with StudioFX, you're getting enterprise-level thinking applied to businesses of any size.
+                </p>
+                <p>
+                    Today, we've expanded into Voice AI and automation, helping clients capture leads around the clock without adding headcount. Same obsession with results. Same commitment to actually picking up the phone when you call.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-24 px-6" style="border-bottom: 1px solid var(--border);">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-xs font-black uppercase tracking-widest mb-6" style="color: var(--accent);">Leadership</p>
+                <h2 class="text-4xl md:text-5xl font-black uppercase">
+                    MEET THE <span class="gradient-text">TEAM</span>
+                </h2>
+            </div>
+            <div class="flex justify-center">
+                <div class="team-card rounded-lg p-8 max-w-md text-center">
+                    <div class="w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl font-black" style="background: linear-gradient(135deg, #6D28D9, #9333EA);">
+                        JD
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-2">John Daly</h3>
+                    <p class="text-sm font-bold uppercase tracking-widest mb-4" style="color: var(--accent);">Founder & CEO</p>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        Decades of experience in cybersecurity and web design. Obsessed with systems that actually work and clients who actually get results.
+                    </p>
+                </div>
+            </div>
+            <p class="text-center mt-12 text-sm font-bold" style="color: var(--muted);">
+                + A dedicated team of designers, developers, and AI specialists
+            </p>
+        </div>
+    </section>
+
+    <!-- Values / Charter Section -->
+    <section class="py-24 px-6" style="border-bottom: 1px solid var(--border);">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-xs font-black uppercase tracking-widest mb-6" style="color: var(--accent);">Our Charter</p>
+                <h2 class="text-4xl md:text-5xl font-black uppercase">
+                    WHAT WE <span class="gradient-text">STAND FOR</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="value-card rounded-lg p-8">
+                    <div class="text-4xl mb-4">⏱️</div>
+                    <h3 class="text-xl font-black uppercase mb-3">On-Time, Every Time</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        Deadlines aren't guidelines. When we say Thursday, we mean Thursday. Your launch date is sacred to us.
+                    </p>
+                </div>
+                <div class="value-card rounded-lg p-8">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Results Over Ego</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        We don't build websites to win design awards. We build them to win you customers. Every decision ties back to your ROI.
+                    </p>
+                </div>
+                <div class="value-card rounded-lg p-8">
+                    <div class="text-4xl mb-4">📞</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Actually Responsive</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        We answer emails. We pick up calls. Wild concept, we know. You'll never wonder where your project stands.
+                    </p>
+                </div>
+                <div class="value-card rounded-lg p-8">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Security-First</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        With roots in cybersecurity, we bake protection into every project. Your site, your data, your customers — all locked down.
+                    </p>
+                </div>
+                <div class="value-card rounded-lg p-8">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="text-xl font-black uppercase mb-3">No Surprises</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        Transparent pricing. Clear timelines. Honest feedback — even when it's not what you want to hear.
+                    </p>
+                </div>
+                <div class="value-card rounded-lg p-8">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Built to Scale</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        We design with your future in mind. Today's startup site becomes tomorrow's enterprise platform without a rebuild.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="py-24 px-6" style="border-bottom: 1px solid var(--border);">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-xs font-black uppercase tracking-widest mb-6" style="color: var(--accent);">Where We're Based</p>
+            <h2 class="text-4xl md:text-5xl font-black uppercase mb-8">
+                BRADENTON, <span class="gradient-text">FLORIDA</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-8" style="color: var(--muted);">
+                Proudly serving the Gulf Coast and clients nationwide. Local enough to grab coffee, capable enough to handle enterprise projects anywhere.
+            </p>
+            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full" style="background: var(--surface); border: 1px solid var(--border);">
+                <span class="accent-dot"></span>
+                <span class="text-sm font-bold uppercase tracking-widest">Serving clients across the U.S.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 px-6 text-center" style="border-bottom: 1px solid var(--border);">
+        <p class="text-xs font-black uppercase tracking-widest mb-6" style="color: var(--accent);">Ready to Work Together?</p>
+        <h2 class="text-huge font-black uppercase mb-8">
+            LET'S<br><span class="gradient-text">TALK.</span>
+        </h2>
+        <p class="max-w-xl mx-auto text-xl mb-12 font-medium" style="color: var(--muted);">
+            No sales pitch. Just a real conversation about what you need and whether we're the right fit.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="contact.html" class="btn-pill uppercase text-base px-12 py-4">Start a Conversation →</a>
+            <a href="portfolio.html" class="btn-outline uppercase text-base px-12 py-4">See Our Work</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--surface);">
+        <div class="px-6 grid grid-cols-1 md:grid-cols-4 gap-12 py-20" style="border-bottom: 1px solid var(--border);">
+            <div>
+                <p class="font-black text-2xl mb-4 gradient-text">StudioFX</p>
+                <p class="text-sm leading-relaxed" style="color: var(--muted);">Web design and Voice AI solutions that turn visitors into customers — and ideas into growth engines.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Services</h4>
+                <ul class="flex flex-col gap-3 font-bold">
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Web Design</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Voice AI Agents</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">E-Commerce</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">✨ AI Chatbots</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Brand Identity</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Company</h4>
+                <ul class="flex flex-col gap-3 font-bold">
+                    <li><a href="index.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Home</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--text);">About</a></li>
+                    <li><a href="blog.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Blog</a></li>
+                    <li><a href="portfolio.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Portfolio</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors uppercase text-xs tracking-widest" style="color: var(--muted);">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-xs tracking-widest mb-6" style="color: var(--muted);">Stay Updated</h4>
+                <div class="flex pb-2 mb-3" style="border-bottom: 1px solid var(--border);">
+                    <input type="email" placeholder="your@email.com" class="bg-transparent outline-none w-full text-sm font-bold" style="color: var(--text);">
+                    <button class="font-black" style="color: var(--accent);">→</button>
+                </div>
+                <p class="text-xs" style="color: var(--muted);">AI industry insights & studio updates. No spam.</p>
+            </div>
+        </div>
+        <div class="overflow-hidden" style="border-bottom: 1px solid var(--border);">
+            <h1 class="text-[25vw] font-black leading-none tracking-tighter select-none pointer-events-none gradient-text" style="opacity: 0.08;">StudioFX</h1>
+        </div>
+        <div class="p-6 flex justify-between text-[10px] font-bold uppercase" style="color: var(--muted);">
+            <p>© 2026 StudioFX Digital LLC</p>
+            <p>WEB DESIGN ✦ VOICE AI</p>
+        </div>
+    </footer>
+
+</body>
+</html>
