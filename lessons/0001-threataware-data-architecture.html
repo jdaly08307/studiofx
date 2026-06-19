@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1 — ThreatAware: What It Is & How Data Flows</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="lesson-meta">ThreatAware · Lesson 1 of 3 · Data Architecture</div>
+
+  <h1>What ThreatAware Is and How Data Flows Through It</h1>
+
+  <p>
+    By the end of this lesson you'll be able to explain ThreatAware's architecture in a
+    single whiteboard conversation — what it does, why organisations buy it, and exactly
+    how data moves from their existing security tools into a unified view.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>1. The Problem ThreatAware Solves</h2>
+
+  <p>
+    Most organisations have 10–30 security and IT tools — an EDR, a patch management
+    tool, an MDM, a vulnerability scanner, a SIEM. Each tool sees a slice of the
+    environment. None of them agree on what's actually in the estate.
+  </p>
+  <p>
+    The result: <strong>blind spots</strong>. On average, organisations don't know about
+    roughly 30% of the devices on their network. Those unknown devices are unpatched,
+    unmonitored, and wide open.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">The core pitch</div>
+    ThreatAware answers one question: <em>"Do I have complete, accurate visibility of
+    every asset, and do I know exactly which security controls are working on each one?"</em>
+    If the prospect can't answer that confidently today, ThreatAware is the solution.
+  </div>
+
+  <p>
+    ThreatAware is a <strong>Cyber Asset Attack Surface Management (CAASM)</strong> platform.
+    CAASM is an analyst category (coined by Gartner) for tools that aggregate asset data
+    across security tools via API, then correlate it into a single view. ThreatAware is
+    one of the leading dedicated CAASM vendors.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>2. The Data Architecture — Four Layers</h2>
+
+  <p>Think of ThreatAware's architecture as four sequential layers:</p>
+
+  <div class="flow">
+    <div class="flow-box">Security &amp; IT<br>tools (sources)</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box primary">ThreatAware<br>Ingest Layer</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box primary">Correlation &amp;<br>Enrichment Engine</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Unified Asset<br>Intelligence Store</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Dashboards,<br>API, Alerts</div>
+  </div>
+
+  <h3>Layer 1 — Sources (your existing tools)</h3>
+  <p>
+    ThreatAware pulls data from the tools already deployed in an organisation.
+    These are called <strong>integrations</strong>. Examples include:
+  </p>
+  <ul>
+    <li><strong>Endpoint detection &amp; response (EDR)</strong> — CrowdStrike, SentinelOne, Defender</li>
+    <li><strong>Patch management</strong> — Action1, Automox, Ivanti</li>
+    <li><strong>Mobile device management (MDM)</strong> — Intune, Jamf</li>
+    <li><strong>Asset discovery</strong> — Lansweeper, Nmap-class tools</li>
+    <li><strong>Vulnerability scanners</strong> — Qualys, Tenable</li>
+    <li><strong>Identity / directory</strong> — Active Directory, Azure AD</li>
+    <li><strong>Ticketing / ITSM</strong> — Autotask, ServiceNow (for outbound actions)</li>
+  </ul>
+  <p>
+    ThreatAware is <strong>agentless</strong> — nothing is installed on end devices.
+    The connection is purely API-to-API: ThreatAware calls each tool's API to pull data.
+  </p>
+
+  <h3>Layer 2 — Ingest</h3>
+  <p>
+    Each integration is configured with an API key or OAuth credential from the source
+    tool. ThreatAware polls each source on a schedule, pulling raw records:
+    device names, IP addresses, OS versions, patch status, user associations, alert data.
+    This raw data is stored per-source and is fully visible in the
+    <strong>X-Ray View</strong> (covered in Lesson 3).
+  </p>
+
+  <h3>Layer 3 — Correlation &amp; Enrichment (the secret sauce)</h3>
+  <p>
+    This is where ThreatAware's distinctive value lives. The platform uses
+    <strong>timeline matching technology</strong> to resolve the same physical device
+    appearing under different names across different tools. A laptop might be called
+    <code>JSMITH-WIN11</code> in the EDR, <code>192.168.1.54</code> in the vulnerability
+    scanner, and <code>John Smith's MacBook</code> in Jamf.
+  </p>
+  <p>
+    ThreatAware matches on combinations of: hostname, IP address, MAC address, serial
+    number, user association, and temporal signals (did these records appear at the
+    same time on the network?). It resolves them into a <strong>single canonical
+    asset record</strong>.
+  </p>
+
+  <div class="callout tip">
+    <div class="callout-label">Why this matters in a sales conversation</div>
+    The 30% of devices organisations don't know about aren't new devices — they're
+    devices that exist in one tool but not another, so they fall through the gap.
+    Timeline matching surfaces them. That's the "aha" moment for most prospects.
+  </div>
+
+  <h3>Layer 4 — Unified Asset Intelligence Store</h3>
+  <p>
+    After correlation, ThreatAware maintains a single record per asset that includes:
+  </p>
+  <table class="data-table">
+    <thead>
+      <tr><th>Entity</th><th>What it captures</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Devices</strong></td><td>Hostname, OS, owner, network info, which tools cover it, patch status, CVEs, control gaps</td></tr>
+      <tr><td><strong>Users</strong></td><td>Associated devices, identity sources, alert associations</td></tr>
+      <tr><td><strong>Alerts</strong></td><td>Cross-tool alert data, enriched with asset context</td></tr>
+      <tr><td><strong>Controls</strong></td><td>Per-device: is EDR installed? Is patching current? Are expected tools present?</td></tr>
+    </tbody>
+  </table>
+  <p>
+    This store is what powers the dashboards, the query language, the API, and the
+    automated alerting.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>3. The Deployment Story</h2>
+
+  <p>
+    A point worth knowing for sales: ThreatAware can be connected and returning value
+    in <strong>under 30 minutes</strong>. There is no agent rollout, no professional
+    services engagement to start, no firewall changes. You add an integration by
+    entering an API key and pointing ThreatAware at the source tool's cloud API.
+  </p>
+  <p>
+    This is a strong differentiator against legacy asset management tools (CMDBs,
+    spreadsheets, manual agents) that can take months to deploy.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>4. Knowledge Check</h2>
+
+  <div class="quiz" id="q1">
+    <h3>Quick Recall</h3>
+    <p class="quiz-q">What is ThreatAware's primary mechanism for detecting devices that exist in one security tool but not another?</p>
+    <ul class="quiz-options">
+      <li><label><input type="radio" name="q1" value="a"> Installing a lightweight agent on each endpoint</label></li>
+      <li><label><input type="radio" name="q1" value="b"> Timeline matching technology across API-ingested data</label></li>
+      <li><label><input type="radio" name="q1" value="c"> Running its own network scan on the customer's subnet</label></li>
+      <li><label><input type="radio" name="q1" value="d"> Comparing logs from a central SIEM</label></li>
+    </ul>
+    <button class="quiz-btn" onclick="checkQ('q1','b')">Check answer</button>
+    <div class="quiz-result" id="q1-result"></div>
+  </div>
+
+  <div class="quiz" id="q2">
+    <h3>Quick Recall</h3>
+    <p class="quiz-q">Which layer of the ThreatAware architecture resolves "JSMITH-WIN11" and "192.168.1.54" as the same physical device?</p>
+    <ul class="quiz-options">
+      <li><label><input type="radio" name="q2" value="a"> The Ingest Layer</label></li>
+      <li><label><input type="radio" name="q2" value="b"> The Source (integration) Layer</label></li>
+      <li><label><input type="radio" name="q2" value="c"> The Correlation &amp; Enrichment Engine</label></li>
+      <li><label><input type="radio" name="q2" value="d"> The Dashboard &amp; Reporting Layer</label></li>
+    </ul>
+    <button class="quiz-btn" onclick="checkQ('q2','c')">Check answer</button>
+    <div class="quiz-result" id="q2-result"></div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>5. The One-Sentence Summary</h2>
+
+  <div class="callout">
+    <div class="callout-label">Commit this to memory</div>
+    ThreatAware connects via API to your existing security tools, uses timeline matching
+    to correlate fragmented records into single canonical assets, and gives you one
+    unified view of your entire estate — with control coverage gaps highlighted per device.
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <div class="ask-box">
+    <strong>Ask your teacher anything.</strong>
+    Something unclear about the data flow? Want to know how to explain a specific layer
+    to a sceptical engineer? How to handle "we already have a CMDB"? Just ask in the
+    chat and your teacher will answer.
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <div class="lesson-nav">
+    <span>← Start</span>
+    <a href="0002-api-integration-model.html">Lesson 2: API Integration Model →</a>
+  </div>
+
+</div>
+
+<script>
+function checkQ(id, correct) {
+  const selected = document.querySelector(`input[name="${id}"]:checked`);
+  const result = document.getElementById(`${id}-result`);
+  if (!selected) { result.textContent = 'Select an answer first.'; result.className = 'quiz-result'; return; }
+  if (selected.value === correct) {
+    result.textContent = '✓ Correct.';
+    result.className = 'quiz-result correct';
+  } else {
+    result.textContent = '✗ Not quite — re-read section 3 and try again.';
+    result.className = 'quiz-result wrong';
+  }
+}
+</script>
+</body>
+</html>

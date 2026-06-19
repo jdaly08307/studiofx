@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3 — ThreatAware: Software Interface Walkthrough</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="lesson-meta">ThreatAware · Lesson 3 of 3 · Software Interface</div>
+
+  <h1>Walking Through the ThreatAware Interface</h1>
+
+  <p>
+    This lesson maps the ThreatAware UI so you can walk a prospect through it —
+    or describe what they'll see — with confidence. Each section corresponds to a
+    distinct area of the product.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>1. The Interface at a Glance</h2>
+
+  <p>ThreatAware's interface is organised around five primary areas:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>#</th><th>Area</th><th>What it answers</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Main Dashboard</strong></td><td>"What is my security posture right now, and what's changing?"</td></tr>
+      <tr><td>2</td><td><strong>Asset Inventory</strong></td><td>"What devices, users, and software are in my estate?"</td></tr>
+      <tr><td>3</td><td><strong>X-Ray View</strong></td><td>"What raw data did each individual tool send, and does it match?"</td></tr>
+      <tr><td>4</td><td><strong>Query Language</strong></td><td>"Let me find every device where Defender is missing AND patch is overdue."</td></tr>
+      <tr><td>5</td><td><strong>Custom Dashboards &amp; Reporting</strong></td><td>"Give me a weekly executive report and a SOC dashboard, automatically."</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>2. Main Dashboard</h2>
+
+  <p>
+    The dashboard is the first screen after login. Think of it as the
+    <strong>health monitor</strong> of the entire IT estate.
+  </p>
+
+  <p>Key elements:</p>
+  <ul>
+    <li><strong>Trend data</strong> — charts showing how posture metrics are moving over time (devices covered by EDR this week vs. last week)</li>
+    <li><strong>Risk priorities</strong> — surfaced issues ranked by severity: unprotected devices, missing patches, critical alerts</li>
+    <li><strong>Action items</strong> — specific things that need to be addressed, with drill-down capability</li>
+    <li><strong>Integration health indicators</strong> — are all your source tools connected and syncing?</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">Demo talking point</div>
+    "The dashboard becomes the single pane of glass that replaces tabbing between
+    12 different tools. Your team wakes up here every morning. If something's red,
+    they know immediately — and they can click straight to the affected device."
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>3. Asset Inventory</h2>
+
+  <p>
+    This is the heart of what ThreatAware delivers: a <strong>complete, correlated
+    device, user, and software inventory</strong>.
+  </p>
+
+  <p>Each asset record shows:</p>
+  <ul>
+    <li>Device identity (name, OS, hardware)</li>
+    <li>Last seen / active status</li>
+    <li>Which integrations "see" this device (and which don't — the gap)</li>
+    <li>Control coverage: EDR installed? Patch current? Encryption enabled?</li>
+    <li>User association</li>
+    <li>Open vulnerabilities / CVEs</li>
+    <li>Alert history</li>
+  </ul>
+
+  <div class="callout tip">
+    <div class="callout-label">The "stealth device" moment</div>
+    When demoing, filtering to show devices that appear in only one integration
+    (or none of the expected ones) is a powerful moment. These are the blind spots —
+    real devices with no EDR, no patch management, fully exposed. Most prospects
+    immediately recognise some of them.
+  </div>
+
+  <p>
+    The inventory is described by ThreatAware as "the replacement for the traditional
+    asset spreadsheet." That framing resonates with buyers who've been managing Excel
+    sheets or out-of-date CMDBs.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>4. X-Ray View</h2>
+
+  <p>
+    The X-Ray View is a <strong>transparency layer</strong> — it shows the raw,
+    per-source data <em>before</em> correlation. This is where engineers spend time
+    to verify accuracy and audit the platform's work.
+  </p>
+
+  <p>Why it matters:</p>
+  <ul>
+    <li>Engineers can see exactly what data CrowdStrike, for example, sent for a specific device</li>
+    <li>They can validate that ThreatAware's correlation is correct ("yes, these two records are the same device")</li>
+    <li>It builds trust — nothing is hidden or black-boxed</li>
+    <li>Useful for compliance: you can prove where data came from</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">Common prospect concern</div>
+    Engineers often ask: "How do I know the correlation is correct? What if it
+    wrongly merges two devices?" X-Ray View is the answer. Show them the raw
+    source data and the matched fields. ThreatAware's transparency here is a
+    genuine differentiator.
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>5. The Query Language</h2>
+
+  <p>
+    ThreatAware includes a <strong>powerful query language</strong> for filtering and
+    searching across the unified asset data. This is where power users live.
+  </p>
+
+  <p>Example queries you can describe to a prospect:</p>
+
+  <pre><code># All devices missing EDR coverage
+device.edr_installed = false
+
+# All devices last seen more than 30 days ago
+device.last_seen > 30d
+
+# Devices with critical CVEs where patch is not current
+device.cve_severity = "critical" AND device.patch_status != "current"
+
+# Devices assigned to a user in the Finance department
+device.user.department = "Finance" AND device.os = "Windows"</code></pre>
+
+  <p>
+    (Note: the exact syntax lives in the platform. The above illustrates the
+    <em>capability</em> — boolean logic, field filtering, cross-entity queries.)
+  </p>
+
+  <p>
+    Saved queries become <strong>custom views</strong> that can be shared with
+    stakeholders — a SOC analyst's view looks different from a CISO's view.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>6. Custom Dashboards &amp; Automated Reporting</h2>
+
+  <p>
+    Beyond the main dashboard, ThreatAware lets users build <strong>tailored dashboards</strong>
+    for different audiences:
+  </p>
+  <ul>
+    <li><strong>Executive / CISO dashboard</strong> — high-level posture score, trend, compliance readiness</li>
+    <li><strong>SOC dashboard</strong> — active alerts, unresolved risk, coverage gaps by team</li>
+    <li><strong>Compliance dashboard</strong> — control mapping to frameworks (Cyber Essentials, ISO 27001, etc.)</li>
+    <li><strong>Team-specific views</strong> — share a filtered view with the network team vs. the endpoint team</li>
+  </ul>
+
+  <p>
+    <strong>Automated reports</strong> can be scheduled and emailed — weekly posture
+    summaries, monthly board-level reports — without manual effort each cycle.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">Sales talking point</div>
+    "The CISO can get a board-ready PDF every Monday morning automatically. The SOC
+    gets their live view in the platform. Neither has to ask the other for data."
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>7. The Demo Walk — A Suggested Sequence</h2>
+
+  <p>
+    When walking a prospect through ThreatAware, use this sequence. It builds
+    from big picture to technical depth:
+  </p>
+
+  <ol>
+    <li><strong>Dashboard first</strong> — "This is what your team sees every morning."</li>
+    <li><strong>Asset inventory</strong> — "Here's every device, correlated from all your tools."</li>
+    <li><strong>Filter to gaps</strong> — "Watch what happens when I filter to devices missing EDR…" <em>(the moment of impact)</em></li>
+    <li><strong>Drill into a device</strong> — "Click any device and you see every tool that sees it — and every tool that doesn't."</li>
+    <li><strong>X-Ray View</strong> — "If you want to see the raw source data behind any record, here it is."</li>
+    <li><strong>Query language</strong> — "Your SOC can write queries like this to build any custom view they need."</li>
+    <li><strong>Reporting</strong> — "And this goes to your CISO automatically every week."</li>
+  </ol>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>8. Knowledge Check</h2>
+
+  <div class="quiz" id="q1">
+    <h3>Quick Recall</h3>
+    <p class="quiz-q">An engineer says: "How do I verify that ThreatAware correctly matched two records from different tools as the same device?" Which interface area addresses this?</p>
+    <ul class="quiz-options">
+      <li><label><input type="radio" name="q1" value="a"> The Main Dashboard trend charts</label></li>
+      <li><label><input type="radio" name="q1" value="b"> The Automated Reporting module</label></li>
+      <li><label><input type="radio" name="q1" value="c"> The X-Ray View — raw per-source data with matched fields visible</label></li>
+      <li><label><input type="radio" name="q1" value="d"> The Query Language — by running a deduplication query</label></li>
+    </ul>
+    <button class="quiz-btn" onclick="checkQ('q1','c')">Check answer</button>
+    <div class="quiz-result" id="q1-result"></div>
+  </div>
+
+  <div class="quiz" id="q2">
+    <h3>Scenario</h3>
+    <p class="quiz-q">A CISO asks for a weekly email showing overall security posture without manual effort. Which ThreatAware capability handles this?</p>
+    <ul class="quiz-options">
+      <li><label><input type="radio" name="q2" value="a"> The X-Ray View, exported to CSV</label></li>
+      <li><label><input type="radio" name="q2" value="b"> Custom Dashboards with automated scheduled reporting</label></li>
+      <li><label><input type="radio" name="q2" value="c"> The Asset Inventory filtered by last-seen date</label></li>
+      <li><label><input type="radio" name="q2" value="d"> The ThreatAware REST API, polled by a custom script</label></li>
+    </ul>
+    <button class="quiz-btn" onclick="checkQ('q2','b')">Check answer</button>
+    <div class="quiz-result" id="q2-result"></div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>9. The Full Picture</h2>
+
+  <p>
+    You've now covered all three lessons. Here's how the pieces connect:
+  </p>
+
+  <div class="flow" style="flex-direction:column; align-items:flex-start; gap:0.75rem;">
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <div class="flow-box" style="min-width:200px;"><strong>Lesson 1</strong><br>Data Architecture</div>
+      <span>→ Why ThreatAware exists, how data flows from tools through correlation to the unified store</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <div class="flow-box primary" style="min-width:200px;"><strong>Lesson 2</strong><br>API Integration Model</div>
+      <span>→ How integrations authenticate &amp; pull, ThreatAware's own REST API (read-only), engineer Q&amp;A</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <div class="flow-box" style="min-width:200px;"><strong>Lesson 3</strong><br>Software Interface</div>
+      <span>→ Dashboard → Inventory → X-Ray → Query → Reporting: the demo walk</span>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <div class="ask-box">
+    <strong>Ask your teacher anything.</strong>
+    Want to roleplay a demo? Need to handle a specific objection? Want a glossary
+    of ThreatAware-specific terms? Ask in chat.
+  </div>
+
+  <div class="lesson-nav">
+    <a href="0002-api-integration-model.html">← Lesson 2: API Integration Model</a>
+    <span>End of course ✓</span>
+  </div>
+
+</div>
+
+<script>
+function checkQ(id, correct) {
+  const selected = document.querySelector(`input[name="${id}"]:checked`);
+  const result = document.getElementById(`${id}-result`);
+  if (!selected) { result.textContent = 'Select an answer first.'; result.className = 'quiz-result'; return; }
+  if (selected.value === correct) {
+    result.textContent = '✓ Correct.';
+    result.className = 'quiz-result correct';
+  } else {
+    result.textContent = '✗ Not quite — re-read the section above and try again.';
+    result.className = 'quiz-result wrong';
+  }
+}
+</script>
+</body>
+</html>
