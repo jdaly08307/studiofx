@@ -7,219 +7,236 @@
   <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span>ThreatAware · Sales Enablement</div>
+    <h1>The API Integration Model</h1>
+    <p class="hero-sub">Understand exactly what happens when ThreatAware "integrates" with a tool — technically. After this you can hold a first-round engineering conversation without bluffing.</p>
+
+    <div class="progress-track">
+      <div class="progress-step done">
+        <div class="step-pip">✓</div>
+        <span>Data Architecture</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step active">
+        <div class="step-pip">2</div>
+        <span>API Model</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="step-pip">3</div>
+        <span>Interface</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="page">
 
-  <div class="lesson-meta">ThreatAware · Lesson 2 of 3 · API Integration Model</div>
+  <!-- Section 1 -->
+  <div class="section-card">
+    <div class="section-label"><span class="label-num">1</span>Data Flow Directions</div>
+    <h2>Two directions: inbound pull and outbound action</h2>
 
-  <h1>The API Integration Model</h1>
+    <table class="data-table">
+      <thead>
+        <tr><th>Direction</th><th>What it means</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Inbound (pull)</strong></td>
+          <td>ThreatAware calls the source tool's API to read data</td>
+          <td>CrowdStrike → ThreatAware, Lansweeper → ThreatAware, Intune → ThreatAware</td>
+        </tr>
+        <tr>
+          <td><strong>Outbound (action)</strong></td>
+          <td>ThreatAware sends data or triggers actions in another tool</td>
+          <td>ThreatAware → Autotask (create ticket), ThreatAware → ServiceNow (raise incident)</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <p>
-    This lesson covers exactly what happens when ThreatAware "integrates" with a tool —
-    technically. After this, you can hold a first-round conversation with a prospect's
-    engineer without bluffing.
-  </p>
-
-  <!-- ─────────────────────────────────────────── -->
-  <h2>1. Two Directions of Data Flow</h2>
-
-  <p>ThreatAware integrations run in two directions:</p>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Direction</th><th>What it means</th><th>Examples</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Inbound (pull)</strong></td>
-        <td>ThreatAware calls the source tool's API to read data</td>
-        <td>CrowdStrike → ThreatAware, Lansweeper → ThreatAware, Intune → ThreatAware</td>
-      </tr>
-      <tr>
-        <td><strong>Outbound (push/action)</strong></td>
-        <td>ThreatAware sends data or triggers actions in another tool</td>
-        <td>ThreatAware → Autotask (create ticket), ThreatAware → ServiceNow (raise incident)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>
-    The vast majority of integrations are <strong>inbound pulls</strong>. ThreatAware
-    is the consumer of your tools' APIs, not the publisher. Outbound actions are mostly
-    limited to ticketing / workflow tools.
-  </p>
-
-  <!-- ─────────────────────────────────────────── -->
-  <h2>2. How an Inbound Integration Works (Step by Step)</h2>
-
-  <div class="flow">
-    <div class="flow-box">Admin enters<br>API key + endpoint<br>in ThreatAware UI</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-box primary">ThreatAware<br>authenticates<br>to source tool</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-box primary">Polls source API<br>on a schedule<br>(e.g. every hour)</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-box">Raw records<br>stored in<br>X-Ray layer</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-box">Correlation engine<br>resolves to canonical<br>asset records</div>
+    <p>The vast majority of integrations are <strong>inbound pulls</strong>. ThreatAware is the consumer of your tools' APIs, not the publisher. Outbound actions are mostly limited to ticketing and workflow tools.</p>
   </div>
 
-  <h3>Authentication</h3>
-  <p>
-    Each source tool uses its own auth mechanism. ThreatAware supports the common
-    patterns used by SaaS security tools:
-  </p>
-  <ul>
-    <li><strong>API key</strong> — most common; the customer generates a read-only key in the source tool and pastes it into ThreatAware</li>
-    <li><strong>OAuth / client credentials</strong> — used by tools like Microsoft Intune / Azure AD</li>
-    <li><strong>Username + password + MFA</strong> — some legacy tools</li>
-  </ul>
+  <!-- Section 2 -->
+  <div class="section-card">
+    <div class="section-label"><span class="label-num">2</span>How Integrations Work</div>
+    <h2>Step by step: setting up an inbound integration</h2>
 
-  <div class="callout tip">
-    <div class="callout-label">Talking point for engineers</div>
-    ThreatAware recommends creating a dedicated <em>read-only service account</em> or
-    API key with minimum required permissions in each source tool. It never needs write
-    access to those tools to function. This is a security best practice and a common
-    concern engineers raise.
-  </div>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-node grey">🔑</div>
+        <div class="pipe-label">Admin enters API key in ThreatAware UI</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-node indigo">🔐</div>
+        <div class="pipe-label accent">ThreatAware authenticates to source tool</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-node indigo">🔄</div>
+        <div class="pipe-label accent">Polls source API on schedule</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-node teal">📦</div>
+        <div class="pipe-label">Raw records stored in X-Ray layer</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-node grey">🧩</div>
+        <div class="pipe-label">Correlation resolves to canonical assets</div>
+      </div>
+    </div>
 
-  <h3>What Gets Pulled</h3>
-  <p>
-    The specific data fields ThreatAware reads depend on what the source tool exposes,
-    but across integrations the platform is always looking for the same core entities:
-  </p>
-  <ul>
-    <li><strong>Devices / endpoints</strong>: name, OS, last seen, IP, MAC, serial, coverage state</li>
-    <li><strong>Users</strong>: identity, associated devices, groups</li>
-    <li><strong>Alerts</strong>: threat detections, severity, status, affected asset</li>
-    <li><strong>Patch / vulnerability data</strong>: CVEs present, last patch date, missing patches</li>
-  </ul>
-
-  <!-- ─────────────────────────────────────────── -->
-  <h2>3. ThreatAware's Own API (Outbound to Customers)</h2>
-
-  <p>
-    ThreatAware also <em>exposes</em> its own REST API, which customers and integrators
-    can call to read the unified data ThreatAware has assembled.
-  </p>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Characteristic</th><th>Detail</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Protocol</strong></td><td>REST over HTTPS</td></tr>
-      <tr><td><strong>Auth</strong></td><td>API key (generated in the ThreatAware portal)</td></tr>
-      <tr><td><strong>Access type</strong></td><td>Read-only — the API returns data, it does not accept writes or trigger changes</td></tr>
-      <tr><td><strong>Core data entities</strong></td><td>Devices, Users, Alerts, Integration-specific data</td></tr>
-      <tr><td><strong>Format</strong></td><td>JSON responses</td></tr>
-      <tr><td><strong>Documentation</strong></td><td><a href="https://apidocs.threataware.com/">apidocs.threataware.com</a></td></tr>
-    </tbody>
-  </table>
-
-  <p>
-    A typical use case: a customer's SOC team writes a script that calls
-    ThreatAware's <code>/devices</code> endpoint to pull an up-to-date asset list
-    into their SIEM or CMDB. Because ThreatAware has already done the correlation
-    work, they get a clean, deduplicated list rather than raw noise.
-  </p>
-
-  <h3>What engineers ask about the ThreatAware API</h3>
-  <p>Common first-round engineering questions and the honest answers:</p>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Question</th><th>Answer</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>"Is there a webhook / real-time push?"</td>
-        <td>The API is poll-based (read). Real-time alerting happens within the ThreatAware UI and via connected ticketing tools. Direct webhooks to arbitrary endpoints should be confirmed with ThreatAware's technical team.</td>
-      </tr>
-      <tr>
-        <td>"Can I write back to ThreatAware via API?"</td>
-        <td>The current public API is read-only. Actions (like creating tickets) are handled through outbound tool integrations configured in the platform, not direct API writes.</td>
-      </tr>
-      <tr>
-        <td>"How often is data refreshed?"</td>
-        <td>ThreatAware polls each source integration on a schedule. The exact cadence varies by integration type. Real-time connectors exist for some tools; others are hourly or daily. Confirm specifics with ThreatAware for a given integration.</td>
-      </tr>
-      <tr>
-        <td>"What about data residency / GDPR?"</td>
-        <td>Worth flagging to ThreatAware's technical team — this is a deal-stage question, not a pre-sales blocker to resolve alone.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- ─────────────────────────────────────────── -->
-  <h2>4. Integration Ecosystem</h2>
-
-  <p>
-    ThreatAware supports integrations with hundreds of tools. For a sales conversation,
-    know these major categories and representative tools:
-  </p>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Category</th><th>Example tools</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>EDR / endpoint security</td><td>CrowdStrike, SentinelOne, Microsoft Defender, Carbon Black</td></tr>
-      <tr><td>Patch management</td><td>Action1, Automox, Ivanti, WSUS</td></tr>
-      <tr><td>MDM</td><td>Intune, Jamf, Kandji</td></tr>
-      <tr><td>Asset discovery</td><td>Lansweeper, Nmap-based tools</td></tr>
-      <tr><td>Vulnerability management</td><td>Qualys, Tenable, Rapid7</td></tr>
-      <tr><td>Identity / directory</td><td>Active Directory, Azure AD / Entra ID, Okta</td></tr>
-      <tr><td>SIEM / log management</td><td>Splunk, Microsoft Sentinel</td></tr>
-      <tr><td>Ticketing / ITSM (outbound)</td><td>Autotask, ServiceNow, Jira</td></tr>
-      <tr><td>MSP platforms</td><td>Datto, ConnectWise</td></tr>
-    </tbody>
-  </table>
-
-  <div class="callout warn">
-    <div class="callout-label">Check the integrations page</div>
-    The full, current list lives at <a href="https://threataware.com/integrations">threataware.com/integrations</a>.
-    Always refer a prospect there rather than reciting from memory — the list grows regularly.
-  </div>
-
-  <!-- ─────────────────────────────────────────── -->
-  <h2>5. Knowledge Check</h2>
-
-  <div class="quiz" id="q1">
-    <h3>Quick Recall</h3>
-    <p class="quiz-q">An engineer asks: "Can I use the ThreatAware API to push updated asset tags back into the platform?" What is the correct answer?</p>
-    <ul class="quiz-options">
-      <li><label><input type="radio" name="q1" value="a"> Yes — the REST API is fully bidirectional</label></li>
-      <li><label><input type="radio" name="q1" value="b"> No — the public API is read-only; writes happen through configured tool integrations</label></li>
-      <li><label><input type="radio" name="q1" value="c"> Yes — but only via webhook, not REST</label></li>
-      <li><label><input type="radio" name="q1" value="d"> No — ThreatAware has no API at all</label></li>
+    <h3>Authentication</h3>
+    <p>ThreatAware supports the auth patterns used by SaaS security tools:</p>
+    <ul>
+      <li><strong>API key</strong> — most common; the customer generates a read-only key in the source tool and pastes it into ThreatAware</li>
+      <li><strong>OAuth / client credentials</strong> — used by Microsoft Intune, Azure AD / Entra ID</li>
+      <li><strong>Username + password</strong> — some legacy tools</li>
     </ul>
-    <button class="quiz-btn" onclick="checkQ('q1','b')">Check answer</button>
-    <div class="quiz-result" id="q1-result"></div>
+
+    <div class="callout green">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <div class="callout-label">Talking point for engineers</div>
+        <p>ThreatAware recommends a dedicated <strong>read-only service account</strong> or API key with minimum required permissions in each source tool. It never needs write access to those tools to function — a common concern engineers raise first.</p>
+      </div>
+    </div>
+
+    <h3>What gets pulled</h3>
+    <p>Regardless of source tool, ThreatAware is always looking for the same core entities:</p>
+    <table class="data-table">
+      <thead><tr><th>Entity</th><th>Fields pulled</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Devices / endpoints</strong></td><td>Name, OS, last seen, IP, MAC, serial, coverage state</td></tr>
+        <tr><td><strong>Users</strong></td><td>Identity, associated devices, groups</td></tr>
+        <tr><td><strong>Alerts</strong></td><td>Threat detections, severity, status, affected asset</td></tr>
+        <tr><td><strong>Patch / vuln data</strong></td><td>CVEs present, last patch date, missing patches</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="quiz" id="q2">
-    <h3>Quick Recall</h3>
-    <p class="quiz-q">What does ThreatAware need from a source tool (like CrowdStrike) to set up an inbound integration?</p>
-    <ul class="quiz-options">
-      <li><label><input type="radio" name="q2" value="a"> A network route to the customer's on-prem servers</label></li>
-      <li><label><input type="radio" name="q2" value="b"> An agent installed on each managed endpoint</label></li>
-      <li><label><input type="radio" name="q2" value="c"> An API key or credential with read access to the source tool's API</label></li>
-      <li><label><input type="radio" name="q2" value="d"> Full admin credentials for the source tool</label></li>
-    </ul>
-    <button class="quiz-btn" onclick="checkQ('q2','c')">Check answer</button>
-    <div class="quiz-result" id="q2-result"></div>
+  <!-- Section 3 -->
+  <div class="section-card">
+    <div class="section-label"><span class="label-num">3</span>ThreatAware's Own API</div>
+    <h2>Reading unified data out of ThreatAware</h2>
+
+    <p>ThreatAware also <em>exposes</em> its own REST API, which customers and integrators can call to read the unified data ThreatAware has assembled.</p>
+
+    <table class="data-table">
+      <thead><tr><th>Characteristic</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Protocol</strong></td><td>REST over HTTPS</td></tr>
+        <tr><td><strong>Auth</strong></td><td>API key (generated in the ThreatAware portal)</td></tr>
+        <tr><td><strong>Access type</strong></td><td>Read-only — returns data, does not accept writes or trigger changes</td></tr>
+        <tr><td><strong>Core entities</strong></td><td>Devices, Users, Alerts, Integration-specific data</td></tr>
+        <tr><td><strong>Format</strong></td><td>JSON</td></tr>
+        <tr><td><strong>Docs</strong></td><td><a href="https://apidocs.threataware.com/" target="_blank">apidocs.threataware.com</a></td></tr>
+      </tbody>
+    </table>
+
+    <p>A typical use case: a SOC team writes a script calling ThreatAware's <code>/devices</code> endpoint to pull a clean, deduplicated asset list into their SIEM — because ThreatAware has already done the correlation work.</p>
+
+    <h3>Common engineering questions — answered</h3>
+    <table class="data-table">
+      <thead><tr><th>Question</th><th>Honest answer</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>"Is there a webhook / real-time push?"</td>
+          <td>The API is poll-based (read). Real-time alerting happens within the ThreatAware UI and via connected ticketing tools. Confirm webhook support directly with ThreatAware's technical team.</td>
+        </tr>
+        <tr>
+          <td>"Can I write back to ThreatAware via API?"</td>
+          <td>The current public API is read-only. Actions (like creating tickets) are handled through outbound tool integrations configured in the platform.</td>
+        </tr>
+        <tr>
+          <td>"How often is data refreshed?"</td>
+          <td>ThreatAware polls each source on a schedule — cadence varies by integration type. Some tools have near-real-time connectors; others are hourly or daily. Confirm per-integration with ThreatAware.</td>
+        </tr>
+        <tr>
+          <td>"What about data residency / GDPR?"</td>
+          <td>Flag to ThreatAware's technical team — this is a deal-stage question, not a pre-sales blocker to resolve alone.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <!-- ─────────────────────────────────────────── -->
+  <!-- Section 4 -->
+  <div class="section-card">
+    <div class="section-label"><span class="label-num">4</span>Integration Ecosystem</div>
+    <h2>What tools ThreatAware connects to</h2>
+
+    <p>ThreatAware supports hundreds of integrations. Know these categories for a sales conversation:</p>
+
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Representative tools</th></tr></thead>
+      <tbody>
+        <tr><td><strong>EDR / endpoint security</strong></td><td>CrowdStrike, SentinelOne, Microsoft Defender, Carbon Black</td></tr>
+        <tr><td><strong>Patch management</strong></td><td>Action1, Automox, Ivanti, WSUS</td></tr>
+        <tr><td><strong>MDM</strong></td><td>Intune, Jamf, Kandji</td></tr>
+        <tr><td><strong>Asset discovery</strong></td><td>Lansweeper, Nmap-based tools</td></tr>
+        <tr><td><strong>Vulnerability management</strong></td><td>Qualys, Tenable, Rapid7</td></tr>
+        <tr><td><strong>Identity / directory</strong></td><td>Active Directory, Entra ID, Okta</td></tr>
+        <tr><td><strong>SIEM / log management</strong></td><td>Splunk, Microsoft Sentinel</td></tr>
+        <tr><td><strong>Ticketing / ITSM (outbound)</strong></td><td>Autotask, ServiceNow, Jira</td></tr>
+        <tr><td><strong>MSP platforms</strong></td><td>Datto, ConnectWise</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout amber">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <div class="callout-label">Always link, don't recite</div>
+        <p>The full, current list lives at <a href="https://threataware.com/integrations" target="_blank">threataware.com/integrations</a>. Refer prospects there rather than listing from memory — the list grows regularly and reciting it opens you to being caught out.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 — Quiz -->
+  <div class="section-card">
+    <div class="section-label"><span class="label-num">5</span>Knowledge Check</div>
+    <h2>Test your recall</h2>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-badge">⚡ Quick recall</div>
+      <p class="quiz-q">An engineer asks: "Can I use the ThreatAware API to push updated asset tags back into the platform?" What is the correct answer?</p>
+      <ul class="quiz-options">
+        <li><label><input type="radio" name="q1" value="a"><span class="radio-pip"></span>Yes — the REST API is fully bidirectional</label></li>
+        <li><label><input type="radio" name="q1" value="b"><span class="radio-pip"></span>No — the public API is read-only; writes happen through configured tool integrations</label></li>
+        <li><label><input type="radio" name="q1" value="c"><span class="radio-pip"></span>Yes — but only via webhook, not REST</label></li>
+        <li><label><input type="radio" name="q1" value="d"><span class="radio-pip"></span>No — ThreatAware has no external API at all</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQ('q1','b')">Check answer</button>
+      <div class="quiz-result" id="q1-result"></div>
+    </div>
+
+    <div class="quiz" id="q2" style="margin-top:1rem;">
+      <div class="quiz-badge">⚡ Quick recall</div>
+      <p class="quiz-q">What does ThreatAware need from a source tool like CrowdStrike to set up an inbound integration?</p>
+      <ul class="quiz-options">
+        <li><label><input type="radio" name="q2" value="a"><span class="radio-pip"></span>A network route to the customer's on-prem servers</label></li>
+        <li><label><input type="radio" name="q2" value="b"><span class="radio-pip"></span>An agent installed on each managed endpoint</label></li>
+        <li><label><input type="radio" name="q2" value="c"><span class="radio-pip"></span>An API key or credential with read access to the source tool's API</label></li>
+        <li><label><input type="radio" name="q2" value="d"><span class="radio-pip"></span>Full admin credentials for the source tool</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQ('q2','c')">Check answer</button>
+      <div class="quiz-result" id="q2-result"></div>
+    </div>
+  </div>
+
   <div class="ask-box">
-    <strong>Ask your teacher anything.</strong>
-    Got a specific integration a prospect mentioned? Need to know how to handle
-    "we already have a CMDB / SIEM / Qualys"? Ask in chat.
+    <div class="ask-icon">🙋</div>
+    <div>
+      <strong>Ask your teacher anything.</strong>
+      Got a specific integration a prospect mentioned? Need to handle "we already have a SIEM / Qualys / CMDB"? Ask in chat.
+    </div>
   </div>
 
   <div class="lesson-nav">
-    <a href="0001-threataware-data-architecture.html">← Lesson 1: Data Architecture</a>
-    <a href="0003-software-interface-walkthrough.html">Lesson 3: Software Interface →</a>
+    <a href="0001-threataware-data-architecture.html" class="nav-btn prev">← Lesson 1: Data Architecture</a>
+    <a href="0003-software-interface-walkthrough.html" class="nav-btn next">Lesson 3: Interface Walkthrough →</a>
   </div>
 
 </div>
@@ -228,12 +245,12 @@
 function checkQ(id, correct) {
   const selected = document.querySelector(`input[name="${id}"]:checked`);
   const result = document.getElementById(`${id}-result`);
-  if (!selected) { result.textContent = 'Select an answer first.'; result.className = 'quiz-result'; return; }
+  if (!selected) { result.innerHTML = 'Select an answer first.'; result.className = 'quiz-result wrong'; return; }
   if (selected.value === correct) {
-    result.textContent = '✓ Correct.';
+    result.innerHTML = '✓ &nbsp;Correct.';
     result.className = 'quiz-result correct';
   } else {
-    result.textContent = '✗ Not quite — re-read the section above and try again.';
+    result.innerHTML = '✗ &nbsp;Not quite — re-read the section above and try again.';
     result.className = 'quiz-result wrong';
   }
 }
